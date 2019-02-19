@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Chzrxl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+  </style>
+</head>
+<body>
+
+<h1>Chzrxl</h1>
+
+<div id="wrapper" style="text-align: center">
+  <div id="container" style="display: inline-block; border: 1px solid blue">
+    <!-- view goes here -->
+  </div>
+</div>
+
+<!-- to run this offline, download this file and change this URL to point to your local copy of pixi.min.js -->
+<!-- <script src="https://catseye.tc/contrib/pixi.js-v4.8.5/pixi.min.js"></script> -->
+<script src="pixi.min.js"></script>
+<script src="../src/chzrxl.js"></script>
+<script>
+function launch(config) {
+  var app = new PIXI.Application({ 
+    width: config.width,
+    height: config.height,
+    forceCanvas: false,
+    antialias: true,
+    backgroundColor : 0xffffff
+  });
+  config.container.appendChild(app.view);
+  var c = new Chzrxl().init({
+    width: config.width,
+    height: config.height,
+    onInitBlob: function(blob) {
+      var graphics = new PIXI.Graphics();
+      graphics.lineStyle(0);
+      //var style = "hsl(" + Math.floor(Math.random() * 256) + ",10%,50%)";
+      graphics.beginFill(0xff0000 + blob.index);
+      graphics.drawCircle(0, 0, blob.radius);
+      graphics.endFill();
+      app.stage.addChild(graphics);
+      blob.graphics = graphics;
+    },
+    onUpdateBlob: function(blob) {
+      blob.graphics.x = blob.x;
+      blob.graphics.y = blob.y;
+    }
+  });
+  app.ticker.add(function(delta) {
+    c.update();
+  });
+}
+
+launch({
+  width: 800,
+  height: 600,
+  container: document.getElementById('container')
+});
+</script>
+</body>
