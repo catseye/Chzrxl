@@ -36,6 +36,7 @@ Chzrxl = function() {
         this.height = config.height;
         this.blobs = [];
         this.numBlobs = 200;
+        this.numToHoldFixed = Math.floor(this.numBlobs * 0.20);
         this.onUpdateBlob = config.onUpdateBlob;
         this.onInitBlob = config.onInitBlob;
         this.reset();
@@ -73,11 +74,15 @@ Chzrxl = function() {
 
     this.update = function() {
         for (var i = 0; i < this.blobs.length; i++) {
-            if (i < 50) continue;
+            if (i < this.numToHoldFixed) continue;
             var blob = this.blobs[i];
             blob.update(this.tick);
             if (this.onUpdateBlob) this.onUpdateBlob(blob);
         }
         this.tick += 1;
+    };
+
+    this.setPercentToHoldFixed = function(percent) {
+        this.numToHoldFixed = Math.floor(this.numBlobs * (percent / 100));
     };
 };

@@ -60,4 +60,28 @@ function launch(config) {
   app.ticker.add(function(delta) {
     c.update();
   });
+
+  if (config.controlPanel) {
+    function makeSlider(container, min_, max_, value, fun) {
+      var slider = document.createElement('input');
+      slider.type = "range";
+      slider.min = min_;
+      slider.max = max_;
+      slider.value = value || 0;
+      if (fun) {
+        slider.onchange = function(e) {
+          fun(parseInt(slider.value, 10));
+        };
+      }
+      container.appendChild(slider);
+      return slider;
+    }
+
+    var label = document.createElement('label');
+    label.innerHTML = "Percent to hold fixed:";
+    config.controlPanel.appendChild(label);
+    makeSlider(label, 0, 100, 20, function(v) {
+      c.setPercentToHoldFixed(v);
+    });
+  }
 }
