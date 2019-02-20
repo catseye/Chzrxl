@@ -5,7 +5,6 @@ Blob = function() {
         this.y = config.y;
         this.pt1 = config.pt1;
         this.pt2 = config.pt2;
-        this.radius = config.radius;
         this.rate = config.rate;
         this.phase = config.phase;
         this.colour = config.colour;
@@ -57,7 +56,6 @@ Chzrxl = function() {
             }
             var rate = Math.random() * 100 + 100;
             var phase = Math.floor(Math.random() * 110);
-            var radius = Math.floor(Math.random() * 10) + 5;
             this.blobs.push(new Blob().init({
                 index: i,
                 x: x,
@@ -66,7 +64,6 @@ Chzrxl = function() {
                 pt2: pt2,
                 rate: rate,
                 phase: phase,
-                radius: radius,
                 colour: 0xff0000 + i,
                 blobs: this.blobs,
                 onInitBlob: this.onInitBlob
