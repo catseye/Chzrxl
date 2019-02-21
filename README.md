@@ -5,8 +5,13 @@ Chzrxl
 
 This is the reference distribution for **Chzrxl**, a dynamical system
 fluid automaton thing devised by Chris Pressey in 2014.  It consists
-of a set of blobs where each blob is attracted to the midpoint of two
-other blobs.
+of a set of blobs where each blob sways back and forth between two
+points — the midpoints of two pairs of other blobs.  Of course, since
+those four blobs are *also* moving, their midpoints move too, and
+the result can be quite complex and chaotic.  In fact, in order to
+prevent all the blobs from converging to a common point, a certain
+number of the blobs (say, 20% of them) are held fixed while the others
+move around them.
 
 You can watch it online here: [Chzrxl installation at catseye.tc][].
 (But note that, as of this writing, this is not the version in this
