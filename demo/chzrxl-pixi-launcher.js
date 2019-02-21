@@ -61,25 +61,34 @@ function launch(config) {
     c.update();
   });
 
-  if (config.controlPanel) {
+  if (true) {
+    function makeDiv(container, innerHTML) {
+        var div = document.createElement('div');
+        div.innerHTML = innerHTML || '';
+        container.appendChild(div);
+        return div;
+    }
+    function makeLabel(container, innerHTML) {
+        var label = document.createElement('label');
+        label.innerHTML = innerHTML || '';
+        container.appendChild(label);
+        return label;
+    }
     function makeSlider(container, min_, max_, value, fun) {
       var slider = document.createElement('input');
       slider.type = "range";
       slider.min = min_;
       slider.max = max_;
       slider.value = value || 0;
-      if (fun) {
-        slider.onchange = function(e) {
-          fun(parseInt(slider.value, 10));
-        };
-      }
+      slider.onchange = function(e) {
+        fun(parseInt(slider.value, 10));
+      };
       container.appendChild(slider);
       return slider;
     }
 
-    var label = document.createElement('label');
-    label.innerHTML = "Percent to hold fixed:";
-    config.controlPanel.appendChild(label);
+    var controlPanel = makeDiv(config.container);
+    var label = makeLabel(controlPanel, "Percent to hold fixed:");
     makeSlider(label, 0, 100, 20, function(v) {
       c.setPercentToHoldFixed(v);
     });

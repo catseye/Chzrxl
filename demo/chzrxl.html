@@ -4,20 +4,25 @@
   <title>Chzrxl</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+#installation-wrapper {
+  text-align: center;
+}
+#installation {
+  display: inline-block;
+}
+#installation canvas {
+  border: 1px solid blue;
+}
   </style>
 </head>
 <body>
 
 <h1>Chzrxl</h1>
 
-<div id="wrapper" style="text-align: center">
-  <div id="container" style="display: inline-block; border: 1px solid blue">
+<div id="installation-wrapper">
+  <div id="installation"">
     <!-- view goes here -->
   </div>
-</div>
-
-<div style="text-align: center">
-  <div id="control-panel"></div>
 </div>
 
 <!-- to run this offline, download this file and change this URL to point to your local copy of pixi.min.js -->
@@ -28,8 +33,7 @@
 launch({
   width: 500,
   height: 500,
-  container: document.getElementById('container'),
-  controlPanel: document.getElementById('control-panel')
+  container: document.getElementById('installation'),
 });
 </script>
 </body>
