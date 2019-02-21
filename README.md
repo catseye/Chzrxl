@@ -1,10 +1,12 @@
 Chzrxl
 ======
 
+_"Chzrxl, the Living Inkblot." Or is it some sort of self-attracting lava lamp?_
+
 ![screenshot](https://static.catseye.tc/images/screenshots/Chzrxl.jpg)
 
 This is the reference distribution for **Chzrxl**, a dynamical system
-fluid automaton thing devised by Chris Pressey in 2014.  It consists
+fluid automaton thing devised by Chris Pressey in 2013.  It consists
 of a set of blobs where each blob sways back and forth between two
 points — the midpoints of two pairs of other blobs.  Of course, since
 those four blobs are *also* moving, their midpoints move too, and
