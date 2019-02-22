@@ -12,28 +12,34 @@ points — the midpoints of two pairs of other blobs.  Of course, since
 those four blobs are *also* moving, their midpoints move too, and
 the result can be quite complex and chaotic.  In fact, in order to
 prevent all the blobs from converging to a common point, a certain
-number of the blobs (say, 20% of them) are held fixed while the others
-move around them.
+number of the blobs (say, 5% of them) are typically held fixed while
+the others move around them.
 
-You can watch it online here: [Chzrxl installation at catseye.tc][].
-(But note that, as of this writing, this is not the version in this
-repository; it is the version from the [HTML5 Gewgaws distribution][]).
+You can watch it online here: **[Chzrxl installation at catseye.tc][]**.
 
-Being built on [PixiJS][], the version in this repo has the potential to
-have much nicer visuals; however, it is still a work-in-progress.
-To see it, clone this repository and open
+To run it locally, clone this repository and open
 [demo/chzrxl.html](demo/chzrxl.html) in a web browser such as
-Firefox.
-
-(If opened as a local file, it may fall back to canvas rendering; to
-ensure that WebGL is used, you can [start a local server][], but to be
-frank it doesn't seem to make much difference at this point.)
-
-(TODO: bring this implementation up to par with the other one, and install
-this one online at catseye.tc instead.)
+Firefox.  (Note that, if opened as a local file, the browser may fall back
+to canvas rendering; to ensure that WebGL is used, you can
+[start a local server][], but to be frank it doesn't seem to make much
+difference at this stage.)
 
 The core behaviour is implemented in [src/chzrxl.js](src/chzrxl.js) and
 does not rely on PixiJS or any other display layer.
+
+The PixiJS driver and visuals are defined in
+[demo/chzrxl-pixi-launcher.js](demo/chzrxl-pixi-launcher.js).
+
+### History ###
+
+The first implementation of Chzrxl was in Javascript, in 2013, and this
+implementation can be found in the [HTML5 Gewgaws distribution][].
+
+In 2019, this Javascript implementation was cleaned up and re-fitted to use
+[PixiJS][], and that is the version in this repository.  Since PixiJS uses
+WebGL when possible, this version has the potential to have much nicer visuals
+than the previous versions; however, it is still a work-in-progress in this
+regard.
 
 [Chzrxl installation at catseye.tc]: https://catseye.tc/installation/Chzrxl
 [HTML5 Gewgaws distribution]: https://catseye.tc/distribution/HTML5%20Gewgaws%20distribution
