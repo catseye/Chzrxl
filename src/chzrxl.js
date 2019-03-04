@@ -9,7 +9,6 @@ Blob = function() {
         this.phase = config.phase;
         this.colour = config.colour;
         this.blobs = config.blobs;
-        if (config.onInitBlob) config.onInitBlob(this);
         return this;
     };
 
@@ -38,9 +37,14 @@ Chzrxl = function() {
         this.numBlobs = 200;
         this.numToHoldFixed = Math.floor(this.numBlobs * 0.20);
         this.onUpdateBlob = config.onUpdateBlob;
-        this.onInitBlob = config.onInitBlob;
         this.reset();
         return this;
+    };
+
+    this.forEachBlob = function(callback) {
+        for (var i = 0; i < this.blobs.length; i++) {
+            callback(this.blobs[i]);
+        }
     };
 
     this.reset = function() {
