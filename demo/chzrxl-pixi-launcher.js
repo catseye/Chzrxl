@@ -69,15 +69,15 @@ function launch(config) {
     });
   }
 
-  function setBlurredVisuals(c) {
+  function setNoiseVisuals(c) {
     c.forEachBlob(function(blob) {
       if (blob.graphics) return;
       var graphics = new PIXI.Graphics();
       graphics.lineStyle(0);
-      graphics.beginFill(0xff0000);
+      graphics.beginFill(0x808080);
       graphics.drawCircle(0, 0, 10);
       graphics.endFill();
-      graphics.filters = [new PIXI.filters.BlurFilter()];
+      graphics.filters = [new PIXI.filters.NoiseFilter()];
       app.stage.addChild(graphics);
       blob.graphics = graphics;
     });
@@ -149,7 +149,7 @@ function launch(config) {
       var panel = makeDiv(container);
       makeSelect(panel, "Visuals:", [
         { text: "Classic", value: "1", setVisuals: setClassicVisuals },
-        { text: "Blurred", value: "2", setVisuals: setBlurredVisuals }
+        { text: "Noisy", value: "2", setVisuals: setNoiseVisuals }
       ], function(selection) {
         removeVisuals(c);
         selection.setVisuals(c);
