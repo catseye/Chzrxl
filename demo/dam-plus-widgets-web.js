@@ -1,6 +1,46 @@
-/* dam-widgets.js version 0.0. This file is in the public domain. */
+/* dam-plus-widgets-web.js version 0.1. This file is in the public domain. */
 
-/* dam.js should be included before this source. */
+/* This file is recommended if you just want to use DAM and its standard
+   widget library on an HTML page without bothering with JS build stuff.
+   It consists of dam.js followed by dam-widgets.js, both with only small
+   hand modifications to make them load as-is in ES5. */
+
+var DAM = (function() {
+  var DAM = {};
+  DAM.makeElem = function(tag, args) {
+    args = args || [];
+    var elem = document.createElement(tag);
+    for (var i = 0; i < args.length; i++) {
+      var arg = args[i];
+      if (arg instanceof Element) {
+        elem.appendChild(arg);
+      } else if (typeof arg === 'string' || arg instanceof String) {
+        elem.appendChild(document.createTextNode(arg));
+      } else if (typeof arg === 'object' && arg !== null) {
+        Object.keys(arg).forEach(function(key) {
+          if (key.substring(0, 2) === 'on') {
+            elem.addEventListener(key.substring(2), arg[key]);
+          } else if (arg[key] === null) {
+            elem.removeAttribute(key);
+          } else {
+            elem.setAttribute(key, arg[key]);
+          }
+        });
+      } else {
+        console.log(arg);
+      }
+    }
+    return elem;
+  };
+  DAM.maker = function(tag) {
+    return function() {
+      return DAM.makeElem(tag, arguments);
+    };
+  };
+  return DAM;
+})();
+
+(function(DAM) { // ENTER-SCOPE
 
 /*
  * A labelled checkbox, where the checkbox appears to the left of the label.
@@ -17,7 +57,7 @@ DAM.makeCheckbox = function(config) {
   for(var i = 0; i < args.length; ++i) {
     args[i] = arguments[i];
   }
-  args[0] = { 'for': checkboxId }
+  args[0] = { 'for': checkboxId, 'class': "dam-widget dam-checkbox" }
 
   return DAM.makeElem('span', [
     DAM.makeElem('input', [
@@ -61,16 +101,13 @@ DAM.makePanel = function(config) {
     {
       onclick: function(e) {
         isOpen = !isOpen;
-        button.innerHTML = getLabel();
+        button.textContent = getLabel();
         innerContainer.style.display = isOpen ? "block" : "none";
       }
     }
   ]);
 
-  return DAM.makeElem("div", [
-    button,
-    innerContainer
-  ]);
+  return DAM.makeElem("div", [{ 'class': "dam-widget dam-panel" }, button, innerContainer]);
 };
 
 /*
@@ -92,7 +129,7 @@ DAM.makeSelect = function(config) {
   select.addEventListener('change', function(e) {
     onchange(options[select.selectedIndex]);
   });
-  return DAM.makeElem('label', [title, select]);
+  return DAM.makeElem('label', [{ 'class': "dam-widget dam-select" }, title, select]);
 };
 
 /*
@@ -163,5 +200,9 @@ DAM.makeRange = function(config) {
     }
   ]);
 
-  return DAM.makeElem('span', [DAM.makeElem('label', [title, slider]), textInput, decButton, incButton]);
+  return DAM.makeElem('span', [{ 'class': "dam-widget dam-range" }, DAM.makeElem('label', [title, slider]), textInput, decButton, incButton]);
 };
+
+})(DAM); // EXIT-SCOPE
+
+if (typeof module !== 'undefined') module.exports = DAM;

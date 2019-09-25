@@ -1,5 +1,5 @@
 /*
- * pixi-min.js and chzrxl.js must be loaded before this source.
+ * dam-plus-widgets-web.js, pixi-min.js and chzrxl.js must be loaded before this source.
  * After loading this source, call launch() to create and start the gewgaw.
  */
 
@@ -108,7 +108,6 @@ function launch(config) {
   var div=DAM.maker('div'), button=DAM.maker('button'), span=DAM.maker('span');
 
   /*----- renderer panel -----*/
-
   var renderer = getRenderer(app);
   var rendererSpan = span("Renderer: " + renderer + ".");
   var forceRendererButton = null;
@@ -148,9 +147,20 @@ function launch(config) {
           option.setVisuals(c, app.stage);
         }
       }
-    ),
-    DAM.makeRange({ title: "Percent to hold fixed:", min: 0, max: 100, value: 20, onchange: function(v) { c.setPercentToHoldFixed(v); } })
+    )
   );
 
-  config.container.appendChild(div(rendererPanel, visualsPanel));
+  /*----- controls panel -----*/
+  var controlsPanel = div(
+    DAM.makeRange({
+      title: "Percent to hold fixed:",
+      min: 0,
+      max: 100,
+      value: 20,
+      onchange: function(v) {
+        c.setPercentToHoldFixed(v);
+      }
+    })
+  );
+  config.container.appendChild(div(rendererPanel, visualsPanel, controlsPanel));
 }
