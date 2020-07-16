@@ -1,6 +1,10 @@
 Chzrxl
 ======
 
+_Try it online_ [@ catseye.tc](https://catseye.tc/installation/Chzrxl)
+| _See also:_ [Cyclobots](https://github.com/catseye/Cyclobots#readme)
+∘ [noit o' mnain worb](https://github.com/catseye/noit-o-mnain-worb#readme)
+
 _"Chzrxl, the Living Inkblot." Or is it some sort of self-attracting lava lamp?_
 
 ![screenshot](https://static.catseye.tc/images/screenshots/Chzrxl.jpg)
