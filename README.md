@@ -37,13 +37,14 @@ The PixiJS driver and visuals are defined in
 ### History ###
 
 The first implementation of Chzrxl was in Javascript, in 2013, and this
-implementation can be found in the [HTML5 Gewgaws distribution][].
+implementation (which we can call version 1.0) can be found in the
+[HTML5 Gewgaws distribution][].
 
 In 2019, this Javascript implementation was cleaned up and re-fitted to use
-[PixiJS][], and that is the version in this repository.  Since PixiJS uses
-WebGL when possible, this version has the potential to have much nicer visuals
-than the previous versions; however, it is still a work-in-progress in this
-regard.
+[PixiJS][], and that is the version in this repository (which we will call
+version 1.1 or later).  Since PixiJS uses WebGL when possible, this version
+has the potential to have much nicer visuals than the previous versions;
+however, it is still a work-in-progress in this regard.
 
 [Chzrxl installation at catseye.tc]: https://catseye.tc/installation/Chzrxl
 [HTML5 Gewgaws distribution]: https://catseye.tc/distribution/HTML5%20Gewgaws%20distribution
