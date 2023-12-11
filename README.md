@@ -2,8 +2,8 @@ Chzrxl
 ======
 
 _Try it online_ [@ catseye.tc](https://catseye.tc/installation/Chzrxl)
-| _See also:_ [Cyclobots](https://github.com/catseye/Cyclobots#readme)
-∘ [noit o' mnain worb](https://github.com/catseye/noit-o-mnain-worb#readme)
+| _See also:_ [Cyclobots](https://codeberg.org/catseye/Cyclobots#cyclobots)
+∘ [noit o' mnain worb](https://codeberg.org/catseye/noit-o-mnain-worb#noit-o-mnain-worb)
 
 _"Chzrxl, the Living Inkblot." Or is it some sort of self-attracting lava lamp?_
 
@@ -49,4 +49,4 @@ however, it is still a work-in-progress in this regard.
 [Chzrxl installation at catseye.tc]: https://catseye.tc/installation/Chzrxl
 [HTML5 Gewgaws distribution]: https://catseye.tc/distribution/HTML5%20Gewgaws%20distribution
 [PixiJS]: http://www.pixijs.com/
-[start a local server]: https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally#run-local-server
+[start a local server]: https://web.archive.org/web/20190117102459/https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally#run-local-server
